@@ -1,0 +1,236 @@
+:root {
+    --heart-color: #d1001f;
+    --cover-color: #ff6699; /* Portada de color diferente */
+  }
+  
+  body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(to bottom, #ffe6e6, rgb(255, 179, 179));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Corazón */
+  .heart {
+    position: absolute;
+    transform: rotate(-45deg);
+  }
+  
+  .square {
+    width: 100%;
+    height: 100%;
+    background: var(--heart-color);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), inset 0 4px 6px rgba(255, 255, 255, 0.2);
+  }
+  
+  .circle-left, .circle-right {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--heart-color);
+    border-radius: 50%;
+  }
+  
+  .circle-left {
+    top: -50%;
+    left: 0;
+  }
+  
+  .circle-right {
+    top: 0;
+    left: 50%;
+  }
+  
+  .heart-center {
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 90px;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    animation: beat 1s infinite;
+  }
+  
+  @keyframes beat {
+    0%, 100% {
+      transform: translate(-50%, -50%) rotate(-45deg) scale(1);
+    }
+    50% {
+      transform: translate(-50%, -50%) rotate(-45deg) scale(1.1);
+    }
+  }
+  
+  .h1 { width: 30px; height: 27px; top: 15%; left: 25%; }
+  .h2 { width: 20px; height: 18px; top: 70%; left: 10%; }
+  .h3 { width: 25px; height: 22px; top: 80%; left: 60%; }
+  .h4 { width: 15px; height: 14px; top: 30%; left: 80%; }
+  .h5 { width: 35px; height: 32px; top: 20%; left: 60%; }
+  .h6 { width: 50px; height: 47px; top: 10%; left: 90%; }
+  .h7 { width: 40px; height: 37px; top: 80%; left: 20%; }
+  .h8 { width: 65px; height: 62px; top: 75%; left: 89%; }
+  .h9 { width: 45px; height: 42px; top:5%; left: 5%; }
+
+/* Book */
+.book {
+    position: relative;
+    width: 450px;
+    height: 600px;
+    transition: transform 0.5s;
+}
+
+.paper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    perspective: 1500px;
+}
+
+.front,
+.back {
+    background-color: var(--cover-color);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform-origin: left;
+    transition: transform 0.5s;
+}
+
+.front {
+    z-index: 1;
+    backface-visibility: hidden;
+    border-left: 3px solid rgb(255, 179, 179);
+}
+
+.back {
+    z-index: 0;
+}
+
+.front-content,
+.back-content {
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    align-items: center;    /* Center align the content horizontally */
+    text-align: center;     /* Center align the text */
+}
+
+.back-content {
+    transform: rotateY(180deg)
+}
+
+/* Paper flip effect */
+.flipped .front,
+.flipped .back {
+    transform: rotateY(-180deg);
+}
+
+/* Controller Buttons */
+button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin: 40px;
+    transition: transform 0.5s;
+}
+
+button:focus {
+    outline: none;
+}
+
+button:hover i {
+    color: #636363;
+}
+
+i {
+    font-size: 50px;
+    color: gray;
+}
+
+/* Paper stack order */
+#p1 {
+    z-index: 5;
+}
+
+#p2 {
+    z-index: 4;
+}
+
+#p3 {
+    z-index: 3;
+}
+
+#p4 {
+    z-index: 2;
+}
+
+#p5{
+    z-index: 1;
+}
+
+.cover-img {
+    margin-top: 10px; /* Spacing between the title and the image */
+    max-width: 70%;   /* Adjust the width to fit within the book */
+    max-height: 60%;  /* Ensure the height doesn't exceed the book */
+    object-fit: contain; /* Ensure the image scales proportionally */
+    height: auto;     /* Maintain the aspect ratio */
+    border-radius: 30px;    /* Rounded corners for the image */
+}
+
+#b1 h2 {
+    font-size: 2em;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#b1 p {
+    margin-bottom: 20px;
+}
+
+.page-img{
+    max-width: 50%;
+    max-height: 40%;
+    object-fit: contain;
+    height: auto;
+    border-radius: 30px; /* Rounded corners for the image */
+    transform: rotate(0deg); /* Add a slight angle */
+    margin: 10px; /* Add spacing around the image */
+}
+
+.page-img1 {
+    max-width: 30%;
+    max-height: 20%;
+    object-fit: contain;
+    height: auto;
+    border-radius: 30px; /* Rounded corners for the image */
+    transform: rotate(10deg); 
+    transform: translate(20, 100); /* Add a slight angle */
+    margin: 10px; /* Add spacing around the image */
+}
+
+.page-img2 {
+    max-width: 40%;
+    max-height: 30%;
+    object-fit: contain;
+    height: auto;
+    border-radius: 30px; /* Rounded corners for the image */
+    transform: translate(270px, -200px); rotate: -30deg; /* Add a slight angle */
+    margin: 10px; /* Add spacing around the image */
+}
+
+.page-img.angle-right {
+    transform: rotate(50deg); /* Rotate in the opposite direction */
+}
+
+.page-img.skew {
+    transform: skew(5deg, -5deg); /* Add a skew effect */
+}
+
+.page-img.offset {
+     transform: translate(20px, 10px); /* Offset the image slightly */
+}

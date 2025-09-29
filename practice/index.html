@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Corazón que palpita</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+  <!-- Corazón central -->
+  <div class="heart heart-center">
+    <div class="square"></div>
+    <div class="circle-left"></div>
+    <div class="circle-right"></div>
+  </div>
+
+  <!-- Corazones estáticos -->
+  <div class="heart h1">
+    <div class="square"></div>
+    <div class="circle-left"></div>
+    <div class="circle-right"></div>
+  </div>
+
+  <div class="heart h2">
+    <div class="square"></div>
+    <div class="circle-left"></div>
+    <div class="circle-right"></div>
+  </div>
+
+  <div class="heart h3">
+    <div class="square"></div>
+    <div class="circle-left"></div>
+    <div class="circle-right"></div>
+  </div>
+
+  <div class="heart h4">
+    <div class="square"></div>
+    <div class="circle-left"></div>
+    <div class="circle-right"></div>
+  </div>
+
+  <div class="heart h5">
+    <div class="square"></div>
+    <div class="circle-left"></div>
+    <div class="circle-right"></div>
+  </div>
+
+  <div class="heart h6">
+    <div class="square"></div>
+    <div class="circle-left"></div>
+    <div class="circle-right"></div>
+  </div>
+
+  <div class="heart h7">
+    <div class="square"></div>
+    <div class="circle-left"></div>
+    <div class="circle-right"></div>
+  </div>
+
+  <div class="heart h8">
+    <div class="square"></div>
+    <div class="circle-left"></div>
+    <div class="circle-right"></div>
+  </div>
+
+  <div class="heart h9">
+    <div class="square"></div>
+    <div class="circle-left"></div>
+    <div class="circle-right"></div>
+  </div>
+
+<!-- CONTENEDOR DEL LIBRO -->
+<div class="book-wrapper">
+  <!-- PORTADA DEL LIBRO -->
+  <div class="book cover-book" onclick="openBook()">
+    <h1>Haz clic para abrir<br>nuestro libro</h1>
+  </div>
+
+  <!-- LIBRO ABIERTO CON PÁGINAS -->
+  <div class="book inner-book">
+    <div class="book-pages">
+      <!-- Página 1 -->
+      <div class="page left-page">
+        <h2>Querida Persona</h2>
+        <p>Este libro está lleno de recuerdos, amor y momentos que quiero compartir contigo.</p>
+        <img src="https://via.placeholder.com/250x150?text=Foto+1" alt="Foto 1">
+      </div>
+      <div class="page right-page">
+        <h2>Gracias por estar aquí</h2>
+        <p>No importa la distancia ni el tiempo, siempre tendrás un lugar en mi corazón.</p>
+        <img src="https://via.placeholder.com/250x150?text=Foto+2" alt="Foto 2">
+      </div>
+
+      <!-- Página 2 -->
+      <div class="page left-page">
+        <h2>Recuerdo Especial</h2>
+        <p>Aquel día en que reímos hasta llorar... inolvidable.</p>
+        <img src="https://via.placeholder.com/250x150?text=Foto+3" alt="Foto 3">
+      </div>
+      <div class="page right-page">
+        <h2>Un Mensaje</h2>
+        <p>Este libro seguirá creciendo con nosotros. Gracias por todo.</p>
+        <img src="https://via.placeholder.com/250x150?text=Foto+4" alt="Foto 4">
+      </div>
+    </div>
+
+    <!-- Botones de navegación -->
+    <div class="navigation">
+      <button onclick="prevPage()">Anterior</button>
+      <button onclick="nextPage()">Siguiente</button>
+      <button onclick="closeBook()">Cerrar Libro</button>
+    </div>
+  </div>
+</div>
+
+<!-- JS -->
+<script>
+  let currentPage = 0;
+  const pages = document.querySelectorAll('.book-pages .page');
+
+  function openBook() {
+    const cover = document.querySelector('.cover-book');
+    const innerBook = document.querySelector('.inner-book');
+
+    cover.classList.add('opened');
+
+    setTimeout(() => {
+      cover.style.display = 'none';
+      innerBook.style.display = 'flex';
+      showPages();
+    }, 1000);
+  }
+
+  function closeBook() {
+    const cover = document.querySelector('.cover-book');
+    const innerBook = document.querySelector('.inner-book');
+
+    innerBook.style.display = 'none';
+    cover.style.display = 'flex';
+    cover.classList.remove('opened');
+    currentPage = 0;
+  }
+
+  function showPages() {
+    pages.forEach((page, index) => {
+      page.style.display = (index === currentPage || index === currentPage + 1) ? 'block' : 'none';
+      page.classList.remove('flip');
+    });
+  }
+
+  function nextPage() {
+  if (currentPage + 2 < pages.length) {
+    pages[currentPage + 1].classList.add('flip'); // solo la derecha
+    currentPage += 2;
+    setTimeout(showPages, 600);
+  }
+}
+
+function prevPage() {
+  if (currentPage - 2 >= 0) {
+    pages[currentPage - 2].classList.add('flip-back'); // solo la izquierda
+    currentPage -= 2;
+    setTimeout(showPages, 600);
+  }
+}
+</script>
+</body>
+</html>
